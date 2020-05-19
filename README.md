@@ -244,3 +244,14 @@ This project is equally contributed by [Jianwei Yang](https://github.com/jwyang)
         Booktitle = {Advances in Neural Information Processing Systems ({NIPS})},
         Year = {2015}
     }
+
+## Installation
+```
+conda install pytorch=1.3 python=3.6 torchvision cudatoolkit=10.0 -c pytorch
+pip install -r requirements.txt
+cd lib && python setup.py build develop
+# install cocoapi
+pip install -U 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI'
+# downgrade scipy to 1.1.0
+conda install scipy=1.1
+```
