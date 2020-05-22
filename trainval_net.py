@@ -54,9 +54,6 @@ def parse_args():
     parser.add_argument('--disp_interval', dest='disp_interval',
                         help='number of iterations to display',
                         default=100, type=int)
-    parser.add_argument('--checkpoint_interval', dest='checkpoint_interval',
-                        help='number of iterations to display',
-                        default=10000, type=int)
 
     parser.add_argument('--save_dir', dest='save_dir',
                         help='directory to save models', default="models",
@@ -201,6 +198,7 @@ if __name__ == '__main__':
     print('{:d} roidb entries'.format(len(roidb)))
 
     output_dir = args.save_dir + "/" + args.net + "/" + args.dataset
+    # output_dir = args.save_dir
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -285,7 +283,6 @@ if __name__ == '__main__':
         lr = optimizer.param_groups[0]['lr']
         if 'pooling_mode' in checkpoint.keys():
             cfg.POOLING_MODE = checkpoint['pooling_mode']
-        print("loaded checkpoint %s" % (load_name))
 
     if args.mGPUs:
         fasterRCNN = nn.DataParallel(fasterRCNN)
