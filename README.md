@@ -255,3 +255,18 @@ pip install -U 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=Pyth
 # downgrade scipy to 1.1.0
 conda install scipy=1.1
 ```
+
+## commands
+```
+# voc0712 training
+python trainval_net.py --dataset pascal_voc_0712 --net res101 --bs 12 --nw 4 --lr 1e-2 --cuda --mGPUs --lr_decay_step 10 --epochs 12
+
+# voc07 testing
+python test_net.py --dataset pascal_voc_0712 --net res101 --checksession 1 --checkepoch 12 --checkpoint 2757 --cuda
+
+# coco training
+python trainval_net.py --dataset coco --net res101 --bs 12 --nw 4 --lr 1e-2 --cuda --mGPUs
+
+# coco testing
+python test_net.py --dataset coco --net res101 --checksession 1 --checkepoch 10 --checkpoint 29315 --cuda
+```
